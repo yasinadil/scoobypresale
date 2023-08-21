@@ -6,9 +6,11 @@ import ETH from "../assests/scoob/eth.svg";
 import USET from "../assests/scoob/usdt.svg";
 import logo from "../assests/logo.png";
 import { Web3Button } from "@thirdweb-dev/react";
-import { useAddress, useBalance } from "@thirdweb-dev/react";
+import { useAddress, useBalance, useChainId } from "@thirdweb-dev/react";
 import { NATIVE_TOKEN_ADDRESS } from "@thirdweb-dev/sdk";
 import { Network, Alchemy } from "alchemy-sdk";
+import { useSwitchChain } from "@thirdweb-dev/react";
+import { Ethereum } from "@thirdweb-dev/chains";
 import {
   presale_address,
   usdt_address,
@@ -35,10 +37,25 @@ const Banner = () => {
   const [selectedToken, setSelectedToken] = useState("native");
   const [progress, setProgress] = useState(0);
   const [approved, setApproved] = useState(false);
+
   const address = useAddress();
   const { data } = useBalance(NATIVE_TOKEN_ADDRESS);
   const { data: usdtBalance } = useBalance(usdt_address);
-  console.log(data);
+  const chainId = useChainId();
+  const switchChain = useSwitchChain();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setTime(calculateTimeLeft());
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  });
+
+  const formatTime = (num) => {
+    // console.log(num)
+    return num.toString().padStart(2, "0");
+  };
 
   useEffect(() => {
     async function load() {
@@ -70,6 +87,51 @@ const Banner = () => {
     }
     load();
   }, []);
+
+  useEffect(() => {
+    if (address && chainId !== 1) {
+      switchChain(Ethereum.chainId).catch((error) =>
+        toast.error(error.message.split(".")[0], {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        })
+      );
+    }
+  }, [address, chainId]);
+
+  const calculateTimeLeft = () => {
+    // const difference = new Date('July 10, 2023 00:00:00') - new Date()
+    let difference = new Date("August 31, 2023 12:00:00") - new Date();
+
+    // console.log(difference)
+    let timeLeft = {};
+
+    if (difference > 0) {
+      timeLeft = {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60),
+      };
+    } else {
+      timeLeft = {
+        days: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: 0,
+      };
+    }
+    // console.log(timeLeft)
+    return timeLeft;
+  };
+
+  const [time, setTime] = useState(calculateTimeLeft());
 
   const handleSuccessUSDTApproval = () => {
     setApproved(true);
@@ -198,6 +260,19 @@ const Banner = () => {
               <div className="wallet_box">
                 <div className="wallet_box_content">
                   <h1 className="heading">Presale is Live Now!</h1>
+                  <div className="topper">
+                    {time.days > 0 ||
+                    time.hours > 0 ||
+                    time.minutes > 0 ||
+                    time.seconds > 0 ? (
+                      <div className="timer">
+                        <div>{formatTime(time.days)}d</div>
+                        <div>{formatTime(time.hours)}h</div>
+                        <div>{formatTime(time.minutes)}m</div>
+                        <div>{formatTime(time.seconds)}s</div>
+                      </div>
+                    ) : null}
+                  </div>
                   <div className="sub_heading">
                     <h3>USDT Raised: ${totalInvestment} / $540,000</h3>
                   </div>
@@ -283,7 +358,7 @@ const Banner = () => {
                       )}
 
                       <div className="input_wrapper">
-                        <span>You receive $SCOOBY</span>
+                        <span>Receive $SCOOBY</span>
                         <div className="input">
                           <input
                             disabled={true}

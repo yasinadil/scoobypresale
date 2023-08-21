@@ -316,6 +316,95 @@
               }
             }
 
+            .topper {
+              .timer {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+                place-items: center;
+                padding: 10px;
+
+                > div {
+                  padding: 20px;
+                  background: #ff9152;
+                  border-radius: 10px;
+                  font-size: 22px;
+                  font-weight: 800;
+                  color: white;
+                  width: 100%;
+                  text-align: center;
+                  width: 90%;
+                  @include md {
+                    font-size: 16px;
+                  }
+                }
+              }
+              p {
+                color: #c9d2d7;
+                font-weight: 400;
+                font-size: 16px;
+                margin: 8px 0 10px;
+                text-align: center;
+              }
+              .line {
+                background: #035164;
+                height: 25px;
+                display: flex;
+                align-items: center;
+                justify-content: start;
+                border-radius: 30px;
+                overflow: hidden;
+                position: relative;
+                margin: 15px 10px;
+                .color {
+                  background: #00fbf4;
+                  height: 100%;
+                }
+                p {
+                  position: absolute;
+                  top: 0;
+                  right: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  display: flex;
+                  margin: 0;
+                  align-items: center;
+                  justify-content: center;
+                }
+              }
+              .dots {
+                display: flex;
+                gap: 10px;
+                background: #043c4d;
+                border: 1px solid #029ba2;
+                padding: 10px;
+                border-radius: 10px;
+                height: 45%;
+                width: 80%;
+                margin: auto;
+                justify-content: center;
+                align-items: center;
+                @include md {
+                  width: 100%;
+                }
+                span {
+                  width: 25px;
+                  height: 25px;
+                  border-radius: 100px;
+                  background: #042433;
+                  border: 1px solid #055eaf24;
+                  @include md {
+                    width: 20px;
+                    height: 20px;
+                  }
+                  @include sm {
+                    width: 17px;
+                    height: 17px;
+                  }
+                }
+              }
+            }
+
             // .line {
             //   display: grid;
             //   grid-template-columns: 1fr 1.5fr;
@@ -537,15 +626,13 @@
                     font-family: "Comfortaa";
                     font-size: 15px;
                     font-weight: 500;
-                    display: grid;
-                    align-items: center;
+                    display: flex;
                     justify-content: space-between;
                     width: 100%;
-                    grid-template-columns: 1fr 0.1fr;
 
                     b {
                       color: red;
-                      width: 100%;
+                      width: 20%;
                       font-family: "Comfortaa";
                       font-size: 13px;
                       font-weight: 500;

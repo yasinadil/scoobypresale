@@ -26,6 +26,17 @@ root.render(
         url: window.location.href,
         isDarkMode: true,
       }}
+      autoConnect={true}
+      activeChain={{
+        ...Ethereum,
+
+        rpc: [
+          `https://eth-mainnet.g.alchemy.com/v2/${process.env.REACT_APP_ALCHEMY_API}`,
+        ], // Override the "rpc" field.
+        // ... Override any other fields you want to customize.
+      }}
+      clientId={process.env.REACT_APP_CLIENT_ID}
+      supportedChains={[Ethereum]}
       supportedWallets={[
         metamaskWallet({
           projectId: process.env.REACT_APP_PROJECT_ID,
@@ -44,15 +55,6 @@ root.render(
           projectId: process.env.REACT_APP_PROJECT_ID,
         }),
       ]}
-      activeChain={{
-        ...Ethereum,
-
-        rpc: [
-          `https://eth-mainnet.g.alchemy.com/v2/${process.env.REACT_APP_ALCHEMY_API}`,
-        ], // Override the "rpc" field.
-        // ... Override any other fields you want to customize.
-      }}
-      clientId={process.env.REACT_APP_CLIENT_ID}
     >
       <App />
     </ThirdwebProvider>
