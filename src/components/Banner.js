@@ -139,6 +139,7 @@ const Banner = () => {
 
   const handleUSDTBuySuccess = () => {
     setApproved(false);
+    setUsdtInput("");
     toast.success("Transaction Successful!", {
       position: "top-right",
       autoClose: 5000,
@@ -187,17 +188,35 @@ const Banner = () => {
   };
 
   const getUSDT2Token = (tetherAmount) => {
-    if (tetherAmount === "0" || tetherAmount === "0." || tetherAmount === "")
-      return;
+    setTimeout(() => {
+      if (tetherAmount.includes(".")) {
+        setTokenAmount("0");
+        setUsdtInput("0");
+        return;
+      }
 
-    const price = "1111";
+      if (tetherAmount === "0" || tetherAmount === "0.") {
+        setTokenAmount("0");
+        return;
+      }
+      if (
+        tetherAmount === "" ||
+        tetherAmount === "0" ||
+        tetherAmount === "0.0"
+      ) {
+        setTokenAmount("0");
+        return;
+      }
 
-    const value = BigNumber.from(tetherAmount).mul(BigNumber.from(price));
+      const price = "1111";
 
-    const stringValue = value.toString();
-    console.log(Number(stringValue).toFixed(0).toString());
+      const value = BigNumber.from(tetherAmount).mul(BigNumber.from(price));
 
-    setTokenAmount(Number(stringValue).toFixed(0).toString());
+      const stringValue = value.toString();
+      console.log(Number(stringValue).toFixed(0).toString());
+
+      setTokenAmount(Number(stringValue).toFixed(0).toString());
+    }, 1000);
   };
 
   const max = async () => {
@@ -216,11 +235,11 @@ const Banner = () => {
       setEthInput(data.displayValue);
       await getETH2Token(data.displayValue);
     } else if (selectedToken === "usdt" && usdtBalance) {
-      const bigN = usdtBalance.value;
-      const stringVal = Number(bigN).toFixed(0).toString();
-      const formatted = ethers.utils.formatUnits(stringVal, 6);
-      setUsdtInput(Number(formatted).toFixed(0).toString());
-      getUSDT2Token(Number(formatted).toFixed(0).toString());
+      const bigN = usdtBalance.displayValue;
+      // const stringVal = Number(bigN).toFixed(0).toString();
+      // const formatted = ethers.utils.formatUnits(stringVal, 6);
+      setUsdtInput(bigN.split(".")[0]);
+      getUSDT2Token(bigN.split(".")[0]);
     }
   };
 
@@ -447,6 +466,11 @@ const Banner = () => {
                         </Web3Button>
                       ) : (
                         <Web3Button
+                          isDisabled={
+                            usdtInput === "" ||
+                            usdtInput === "0" ||
+                            usdtInput === "0."
+                          }
                           contractAddress={usdt_address}
                           contractAbi={USDT_ABI}
                           theme="dark"

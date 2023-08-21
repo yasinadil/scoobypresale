@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { ThirdwebProvider } from "@thirdweb-dev/react";
-import { Ethereum } from "@thirdweb-dev/chains";
+import { Ethereum, Goerli } from "@thirdweb-dev/chains";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { createRoot } from "react-dom/client";
