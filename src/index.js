@@ -33,6 +33,7 @@ root.render(
 
         rpc: [
           `https://eth-mainnet.g.alchemy.com/v2/${process.env.REACT_APP_ALCHEMY_API}`,
+          // "https://eth-goerli.g.alchemy.com/v2/LK5riXBIuRJgosOlAvRdtxW0pZXhfTdi",
         ], // Override the "rpc" field.
         // ... Override any other fields you want to customize.
       }}

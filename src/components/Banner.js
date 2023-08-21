@@ -37,6 +37,8 @@ const Banner = () => {
   const [selectedToken, setSelectedToken] = useState("native");
   const [progress, setProgress] = useState(0);
   const [approved, setApproved] = useState(false);
+  const [resetAllowanceNeeded, setResetAllowanceNeed] = useState(false);
+  const [usdtAllowance, setUsdtAllowance] = useState("0");
 
   const address = useAddress();
   const { data } = useBalance(NATIVE_TOKEN_ADDRESS);
@@ -55,6 +57,39 @@ const Banner = () => {
   const formatTime = (num) => {
     // console.log(num)
     return num.toString().padStart(2, "0");
+  };
+
+  const allowance = async (tetherInput) => {
+    const provider = new ethers.providers.AlchemyProvider(
+      "homestead",
+      process.env.REACT_APP_ALCHEMY_API
+    );
+    const USDT = new ethers.Contract(usdt_address, USDT_ABI, provider);
+
+    const allow = await USDT.allowance(address, presale_address);
+    console.log(ethers.utils.formatUnits(allow.toString(), 6));
+    if (allow.toString() === "0") {
+      setApproved(false);
+      setUsdtAllowance("0");
+    } else {
+      const needed =
+        Number(ethers.utils.formatUnits(allow.toString(), 6)) >=
+        Number(tetherInput);
+      console.log("needed", !needed);
+      console.log("input: ", Number(tetherInput));
+      console.log(
+        "allowance: ",
+        Number(ethers.utils.formatUnits(allow.toString(), 6))
+      );
+      setUsdtAllowance(ethers.utils.formatUnits(allow.toString(), 6));
+      if (needed) {
+        setApproved(true);
+        setResetAllowanceNeed(false);
+      } else {
+        setApproved(false);
+        setResetAllowanceNeed(true);
+      }
+    }
   };
 
   useEffect(() => {
@@ -137,8 +172,9 @@ const Banner = () => {
     setApproved(true);
   };
 
-  const handleUSDTBuySuccess = () => {
+  const handleUSDTBuySuccess = async () => {
     setApproved(false);
+    setResetAllowanceNeed(false);
     setUsdtInput("0");
     setTokenAmount("0");
     toast.success("Transaction Successful!", {
@@ -151,6 +187,25 @@ const Banner = () => {
       progress: undefined,
       theme: "colored",
     });
+
+    // const provider = new ethers.providers.AlchemyProvider(
+    //   "homestead",
+    //   process.env.REACT_APP_ALCHEMY_API
+    // );
+    // const USDT = new ethers.Contract(usdt_address, USDT_ABI, provider);
+
+    // const allow = await USDT.allowance(address, presale_address);
+    // console.log("after");
+    // console.log(
+    //   Number(ethers.utils.formatUnits(allow.toString(), 6)) < Number(usdtInput) &&
+    //     Number(ethers.utils.formatUnits(allow.toString(), 6)) !== "0.0"
+    // );
+    // console.log(ethers.utils.formatUnits(allow.toString(), 6));
+    // if (
+    //   Number(ethers.utils.formatUnits(allow.toString(), 6)) < Number(usdtInput)
+    // ) {
+    //   setResetAllowanceNeed(true);
+    // }
   };
 
   const handleNativeError = (error) => {
@@ -164,6 +219,11 @@ const Banner = () => {
       progress: undefined,
       theme: "colored",
     });
+  };
+
+  const handleResetAllowanceSuccess = () => {
+    setApproved(false);
+    setResetAllowanceNeed(false);
   };
 
   const getETH2Token = async (etherInput) => {
@@ -209,6 +269,8 @@ const Banner = () => {
         return;
       }
 
+      allowance(tetherAmount);
+
       const price = "1111";
 
       const value = BigNumber.from(tetherAmount).mul(BigNumber.from(price));
@@ -242,6 +304,20 @@ const Banner = () => {
       setUsdtInput(bigN.split(".")[0]);
       getUSDT2Token(bigN.split(".")[0]);
     }
+  };
+
+  const handleUSDTError = (error) => {
+    console.log(error);
+    toast.error(error.reason, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
   };
 
   return (
@@ -377,7 +453,6 @@ const Banner = () => {
                           </span>
                           <div className="input">
                             <input
-                              disabled={approved}
                               onChange={async (event) => {
                                 setUsdtInput(event.target.value);
                                 getUSDT2Token(event.target.value);
@@ -438,7 +513,7 @@ const Banner = () => {
                         >
                           <span>BUY NOW</span>
                         </Web3Button>
-                      ) : approved ? (
+                      ) : approved && !resetAllowanceNeeded ? (
                         <Web3Button
                           contractAddress={presale_address}
                           contractAbi={PRESALE_ABI}
@@ -465,12 +540,10 @@ const Banner = () => {
                         >
                           <span>BUY NOW</span>
                         </Web3Button>
-                      ) : (
+                      ) : !resetAllowanceNeeded ? (
                         <Web3Button
                           isDisabled={
-                            usdtInput === "" ||
-                            usdtInput === "0" ||
-                            usdtInput === "0."
+                            usdtInput === "" || usdtInput.includes(".")
                           }
                           contractAddress={usdt_address}
                           contractAbi={USDT_ABI}
@@ -483,20 +556,26 @@ const Banner = () => {
                             ])
                           }
                           onSuccess={() => handleSuccessUSDTApproval()}
-                          onError={(error) =>
-                            toast.error(error.reason, {
-                              position: "top-right",
-                              autoClose: 5000,
-                              hideProgressBar: false,
-                              closeOnClick: true,
-                              pauseOnHover: true,
-                              draggable: true,
-                              progress: undefined,
-                              theme: "colored",
-                            })
-                          }
+                          onError={(error) => handleUSDTError(error)}
                         >
                           <span>APPROVE</span>
+                        </Web3Button>
+                      ) : (
+                        <Web3Button
+                          isDisabled={
+                            usdtInput === "" || usdtInput.includes(".")
+                          }
+                          contractAddress={usdt_address}
+                          contractAbi={USDT_ABI}
+                          theme="dark"
+                          // Call the name of your smart contract function
+                          action={(contract) =>
+                            contract.call("approve", [presale_address, 0])
+                          }
+                          onSuccess={() => handleResetAllowanceSuccess()}
+                          onError={(error) => handleUSDTError(error)}
+                        >
+                          <span>RESET ALLOWANCE</span>
                         </Web3Button>
                       )}
                       {address && (
