@@ -1,0 +1,215 @@
+@import "./media.scss";
+
+#tokenomics {
+  position: relative;
+
+  // background-color: #113974;
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 320px;
+    background: url("../assests/scoob/flower.png");
+
+    background-position: top right;
+    background-repeat: no-repeat;
+    width: 100%;
+    background-size: contain;
+    height: 8%;
+    z-index: 2;
+    left: -5px;
+  }
+
+  &::after {
+    background: url("../assests/scoob/flower.png");
+    content: "";
+    position: absolute;
+    bottom: 0px;
+
+    background-size: contain;
+    background-position: top left;
+    background-repeat: no-repeat;
+    width: 100%;
+    background-size: contain;
+    height: 8%;
+    z-index: 2;
+  }
+
+  .container {
+
+    display: grid;
+    grid-template-columns: 1fr 0.5fr;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 90px 20px;
+    margin: auto;
+    max-width: 1200px;
+
+@include md {
+  grid-template-columns: 1fr;
+}
+
+.end{
+  img{
+    width: 100%;
+    position: relative;
+    z-index: 3;
+  }
+}
+
+    .heading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 0px;
+
+      h1 {
+        -webkit-text-stroke: 3px #f29950;
+        -webkit-text-fill-color: #71419b;
+        font-family: "font-1";
+
+        font-size:
+          
+        clamp(10%, 15vw, 4.5rem);;
+        line-height: 1.12 !important;
+        margin-bottom: 10px;
+        text-shadow: #f46248 -3px 3px 0;
+        color: white;
+        text-transform: uppercase;
+        width: 100%;
+        font-weight: lighter;
+        text-align: center;
+      }
+    }
+
+    .content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      position: relative;
+      z-index: 11;
+
+      @include md {
+        flex-direction: column;
+        row-gap: 60px;
+      }
+
+      .box {
+        // display: flex;
+        // flex-direction: column;
+        // align-items: center;
+        // justify-content: center;
+        // max-width: 1200px;
+        // gap: 7rem;
+        // padding: 90px 20px;
+        // margin: auto;
+        width: 100%;
+
+        .title {
+          font-size: 1.5rem;
+          font-family: "Freude";
+          color: #fff;
+        }
+
+        .heading {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 30px 0px;
+
+          h1 {
+            -webkit-text-stroke: 3px #f29950;
+            -webkit-text-fill-color: #71419b;
+            font-family: "font-1";
+            font-size: 
+        clamp(10%, 16vw, 4.5rem);;
+            line-height: 1.12 !important;
+            margin-bottom: 10px;
+            text-shadow: #f46248 -3px 3px 0;
+            color: white;
+            text-transform: uppercase;
+            text-align: center;
+            width: 100%;
+            font-weight: lighter;
+            /* text-align: start; */
+
+          }
+        }
+
+        ul {
+          position: relative;
+          width: 100%;
+
+          p {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            img {
+              position: absolute;
+              top: -90%;
+              z-index: -1;
+              height: 200px;
+              object-fit: contain;
+              width: 200px;
+
+              @include md {
+                top: -200px;
+              }
+            }
+          }
+
+          div {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            row-gap: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+
+            li {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+
+              /* justify-content: center; */
+              p {
+
+                font-size: 34px;
+                line-height: 1.12 !important;
+                margin-bottom: 10px;
+                color: white;
+                text-transform: uppercase;
+                text-align: center;
+                width: 100%;
+                font-weight: lighter;
+                font-family: 'Freude';
+              }
+
+              &::marker {
+                unicode-bidi: isolate;
+                font-variant-numeric: tabular-nums;
+                text-transform: none;
+                text-indent: 0px !important;
+                text-align: start !important;
+                text-align-last: start !important;
+              }
+
+              span {
+                color: white !important;
+                font-size: 20px;
+                font-weight: 500;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

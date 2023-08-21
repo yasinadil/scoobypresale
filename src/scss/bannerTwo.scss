@@ -1,0 +1,128 @@
+@import "./variable.scss";
+@import "./media.scss";
+
+@font-face {
+  font-family: "DEADLY";
+  src: url("./font/DEADLY\ KILLERS.ttf");
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "Barlow", system-ui;
+  src: url("./font/Demo_Fonts/Fontspring-DEMO-rocgrotesk-medium.otf");
+  font-style: normal;
+  font-weight: normal;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#bannertwo {
+  background: black;
+  height: 120vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(180deg, #0a0406, rgba(10, 4, 6, 0) 25%),
+      url(../assests/main.images/bg/wolf_starry_sky_tree_118496_1366x768.jpg);
+    background-size: cover;
+    z-index: 3;
+    filter: hue-rotate(159deg) brightness(0.2);
+    opacity: 0.5;
+    background-position: bottom center;
+  }
+  // background-image: linear-gradient(180deg, #000, rgba(10, 4, 6, 0.26) 83%, #0a0406), url("../main.images/bac.3.jpg");
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 11;
+    .enter-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0 15px;
+      gap: 1rem;
+      .enter-h {
+        font-family: "Letric";
+        color: #fff;
+        font-size: clamp(60px, 10vw, 80px);
+        line-height: 120%;
+        text-align: center;
+        letter-spacing: 2px;
+        text-shadow: 1px 1px 6px #00000026, 6px 6px 9px #0000005e;
+        font-weight: 500;
+        @include xtablet7 {
+          font-size: 56px;
+        }
+        @include xtablet8 {
+          font-size: 54px;
+        }
+        @include xtablet9 {
+          font-size: 52px;
+        }
+        @include xtablet10 {
+          font-size: 50px;
+        }
+      
+        @include xtablet10 {
+          font-size: 48px;
+        }
+        @include xtablet10 {
+          font-size: 46px;
+        }
+      }
+      span {
+        font-family: "Rubik";
+        margin-top: 0;
+        color: #ffffff;
+        font-size: clamp(1rem, 2vw, 2rem);
+        line-height: 120%;
+        text-align: center;
+        text-shadow: 1px 1px 6px #00000082, 6px 6px 9px #00000082;
+        text-transform: capitalize;
+        line-height: 1.6;
+        width: 90%;
+        font-size: 18px;
+      }
+      .enter-btn {
+        margin-top: 25px;
+
+        button {
+          font-family: "Rubik", system-ui !important;
+          color: white;
+          font-weight: 100;
+          font-size: 16px;
+          cursor: pointer;
+          padding: 10px;
+          background: none;
+          border: 1px solid #ffffff;
+          width: 170px;
+          /* box-shadow: 0px 0px 12px #000000ad; */
+          transition: 0.3s all;
+          &:hover {
+            background: #fff;
+            color: #000;
+          }
+       
+        }
+      }
+    }
+  }
+}

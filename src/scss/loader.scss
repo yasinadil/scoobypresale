@@ -1,0 +1,43 @@
+.loader {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #ffb97e;
+}
+
+.progress__wrapper {
+  width: 260px;
+  margin-top: 15px;
+}
+
+.loader__logo {
+  width: 180px;
+  opacity: 0;
+  animation: fade-in-out 2s ease-in-out infinite;
+}
+
+.css-eglki6-MuiLinearProgress-root {
+  height: 15px !important;
+  background: rgba(196, 196, 196, 0.2) !important;
+}
+
+.css-5xe99f-MuiLinearProgress-bar1 {
+  background: #fff !important;
+}
+
+@keyframes fade-in-out {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

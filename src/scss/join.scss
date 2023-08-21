@@ -1,0 +1,42 @@
+@import "./media.scss";
+
+#join {
+    .container {
+
+        margin: auto;
+        padding: 90px 0px 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 50px;
+
+        .heading {
+            h1 {
+                color: #343030;
+                font-size: 48px;
+                font-family: 'font-3';
+                padding: 20px;
+                font-weight: 600;
+                font-style: italic;
+            }
+
+        }
+
+        .content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            background: white;
+            padding: 12px;
+
+            img {
+                width: 100%;
+                max-width: 900px;
+            }
+
+
+        }
+    }
+}

@@ -1,0 +1,173 @@
+@import "./variable.scss";
+@import "./media.scss";
+
+.collection {
+  position: relative;
+  z-index: 2;
+  padding: 90px 0px 90px;
+  // border-bottom: 2px solid #000;
+  background: black;
+  .heading {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding-bottom: 15px;
+    h1 {
+      line-height: 100%;
+      font-weight: 300;
+      line-height: 118%;
+      text-transform: uppercase;
+      text-align: center;
+      font-size: clamp(3rem, 7vw, 5rem);
+      color: #fff;
+      font-family: "Letric";
+      text-shadow: 2px 2px #0a0807;
+    }
+    button {
+      padding: 11px 50px 10px;
+      border-style: solid;
+      border-width: 0px;
+      border-color: #d6d6d6;
+      border-radius: 0px;
+      transition: all 200ms ease;
+      font-weight: 400;
+      text-transform: uppercase;
+      font-family: "Bebas Neue";
+      font-size: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 100%;
+      transform: translateY(-1px);
+      background: #560120;
+      margin: auto;
+      width: 200px;
+      transition: 0.3s all;
+      margin-top: 50px;
+      &:hover {
+        background: #77022d;
+      }
+    }
+    figure {
+      text-align: center;
+      overflow: hidden;
+      .title {
+        height: 225px;
+        margin-bottom: 0px;
+        width: 100%;
+        object-fit: contain;
+        margin-top: 30px;
+        @include md {
+          height: 130px;
+          transform: scale(1.09);
+        }
+        @include sm {
+          // height: 100px;
+        }
+      }
+    }
+  }
+
+  .container {
+    padding: 30px 0px;
+    .first {
+      > div {
+        // margin-right: 100px;
+      }
+    }
+    .second {
+      > div {
+        // margin-right: 100px;
+      }
+    }
+    .img_grid {
+      height: 250px;
+      width: 100%;
+      transition: all 0.5s ease-out;
+      display: flex;
+      margin: 30px 0px;
+      overflow: hidden;
+      > div {
+        overflow: unset !important;
+        align-items: unset !important;
+      }
+
+      img {
+        max-width: 245px;
+        max-height: 245px;
+        object-fit: cover;
+        margin: 5px 15px;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  .why__us {
+    max-width: 1300px;
+    margin: 150px auto 0;
+    padding: 0 10px;
+
+    img {
+      height: 100px;
+      margin-bottom: 40px;
+      width: 100%;
+      object-fit: contain;
+      @include md {
+        margin-bottom: 0;
+      }
+    }
+    p {
+      span {
+        display: block;
+        margin-bottom: 25px;
+        font-size: 22px;
+        // font-family: 'Roboto';
+        font-weight: 400;
+        // padding: 0 20px;
+        text-align: center;
+        @include md {
+          text-align: start;
+        }
+      }
+    }
+  }
+}
+.auto_scroll {
+  position: fixed;
+  bottom: 5%;
+  right: 3.7%;
+  cursor: pointer;
+  transition: 0.3s all;
+  z-index: 1001;
+  /* max-width: 1200px; */
+  transform: scale(0);
+  /* margin: auto; */
+  @include display {
+    right: 1.4%;
+  }
+  @include coloum {
+    right: 1.7%;
+  }
+
+  > i {
+    width: 50px;
+    background: #b94841;
+    height: 50px;
+    display: grid;
+    place-content: center;
+    border-radius: 100px;
+    border: 1px solid 1px solid #70696945;
+    box-shadow: #111111 0px 2px 6px, inset 0 0 23px #0000004d;
+    pointer-events: auto;
+    display: flex;
+    justify-content: center;
+
+    align-items: center;
+    color: #fff;
+    svg{
+      font-size: 2.4rem;
+      @include md{
+        font-size: 2.3rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@200;300;400;500;600;700;800;900&family=Fredoka+One&family=Inter:wght@300;400;500;600;700;800;900&family=Jost:wght@200;300;400;500;600;700;800;900&family=Karla:wght@200;300;400;500;600;700;800&family=Merienda:wght@400;600;800&family=Oswald:wght@200;300;400;500;600;700&family=Readex+Pro:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bungee&family=Coiny&family=Josefin+Sans:wght@300;400;500;600;700&family=Kanit:wght@400;500;600&family=Koulen&family=Libre+Bodoni:wght@400;500;600;700&family=Luckiest+Guy&family=Martel+Sans:wght@200;300;400;600;700;800;900&family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,800;1,900&family=Oleo+Script:wght@400;700&family=Open+Sans:wght@300;400;500;600;700;800&family=Pacifico&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:wght@100;200;300;400;500;600;700;800;900&family=Rubik:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Spectral:wght@200;300;400;500;600;700;800&family=Tapestry&family=VT323&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&family=Chela+One&family=Comfortaa:wght@300;400;500;600;700&family=Fjalla+One&family=Orbitron:wght@400;500;600;700;800;900&family=Poppins:wght@200;300;400;500&family=Slackey&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&family=Chela+One&family=Comfortaa:wght@300;400;500;600;700&family=Fjalla+One&family=Orbitron:wght@400;500;600;700;800;900&family=Poppins:wght@200;300;400;500&family=Quicksand:wght@300;400;500;600&family=Slackey&display=swap");
+@font-face {
+  font-family: "font-1";
+  src: url("./font/scooby-doo/scoobydoo.ttf");
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "font-2";
+  src: url("./font/Jockey_One/JockeyOne-Regular.ttf");
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "font-3";
+  src: url("./font/Caveat/Caveat-VariableFont_wght.ttf");
+  font-style: normal;
+  font-weight: normal;
+}
+/* @font-face {
+  font-family: "font-4";
+  /* src: url("./font/Museo\ W01\ 700/Tapestry"); */
+@font-face {
+  font-family: "Freude";
+  src: url("./font/Freude/Freude.otf");
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Quicksand", sans-serif;
+  text-decoration: none !important;
+}
+h1,
+h2 {
+  font-family: "Freude", cursive !important;
+  font-weight: 500;
+}
+body {
+  overflow-x: hidden;
+  position: relative;
+  background: #769d28;
+}
+
+.css-1un3lp3 {
+  all: unset;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding: 12px 12px;
+  font-size: 16px;
+  font-weight: 500;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  box-shadow: none;
+  background: #ff9152 !important;
+  color: hsl(246, 6%, 9%);
+  cursor: pointer;
+  -webkit-animation: animation-plwpox 300ms ease;
+  animation: animation-plwpox 300ms ease;
+}
