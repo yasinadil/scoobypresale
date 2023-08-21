@@ -12,6 +12,7 @@ import {
   trustWallet,
   rainbowWallet,
 } from "@thirdweb-dev/react";
+import MetaPixel from "./utils/MetaPixel";
 require("dotenv").config();
 const container = document.getElementById("root");
 const root = createRoot(container); // createRoot(container!) if you use TypeScript
@@ -56,6 +57,7 @@ root.render(
         }),
       ]}
     >
+      <MetaPixel />
       <App />
     </ThirdwebProvider>
   </BrowserRouter>

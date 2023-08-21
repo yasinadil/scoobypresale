@@ -9,7 +9,7 @@ import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import "../scss/faq.scss";
 import { FAQ } from "../assests/data";
-import FaqImg from "../assests/scoob/pngwing.com (12) (1).png" 
+import FaqImg from "../assests/scoob/pngwing.com (12) (1).png";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,6 +18,11 @@ const useStyles = makeStyles((theme) => ({
   heading: {
     fontSize: theme.typography.pxToRem(15),
     fontWeight: theme.typography.fontWeightRegular,
+    wordBreak: "break-all",
+  },
+  paragraph: {
+    width: "100%",
+    wordBreak: "break-all",
   },
 }));
 
@@ -36,17 +41,18 @@ const Faq = () => {
           <div className="heading">
             <h1>FAQ</h1>
             <p data-aos="fade" className="aos-init aos-animate">
-            Common answers to questions about Scooby Doo ($SCOOBY) can be found below.
+              Common answers to questions about Scooby Doo ($SCOOBY) can be
+              found below.
             </p>
           </div>
           <div className="accordian__grid">
-          <div className="start">
+            <div className="start">
               <div className="img">
                 <img src={FaqImg} width="100%" alt="" />
               </div>
             </div>
             <div className="end">
-              <div style={{ width: "100%" }} className={classes.root}>
+              <div style={{ width: "90%" }} className={classes.root}>
                 {FAQ.map((item, i) => {
                   return (
                     <Accordion key={i}>
@@ -60,14 +66,15 @@ const Faq = () => {
                         </Typography>
                       </AccordionSummary>
                       <AccordionDetails>
-                        <Typography>{item.ans}</Typography>
+                        <Typography className={classes.paragraph}>
+                          {item.ans}
+                        </Typography>
                       </AccordionDetails>
                     </Accordion>
                   );
                 })}
               </div>
             </div>
-          
           </div>
         </div>
       </section>

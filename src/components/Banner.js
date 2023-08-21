@@ -137,6 +137,20 @@ const Banner = () => {
     setApproved(true);
   };
 
+  const handleUSDTBuySuccess = () => {
+    setApproved(false);
+    toast.success("Transaction Successful!", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+  };
+
   const handleNativeError = (error) => {
     toast.error(error.reason, {
       position: "top-right",
@@ -415,18 +429,7 @@ const Banner = () => {
                               ethers.utils.parseEther(usdtInput),
                             ])
                           }
-                          onSuccess={() =>
-                            toast.success("Transaction Successful!", {
-                              position: "top-right",
-                              autoClose: 5000,
-                              hideProgressBar: false,
-                              closeOnClick: true,
-                              pauseOnHover: true,
-                              draggable: true,
-                              progress: undefined,
-                              theme: "colored",
-                            })
-                          }
+                          onSuccess={() => handleUSDTBuySuccess()}
                           onError={(error) =>
                             toast.error(error.reason, {
                               position: "top-right",

@@ -61,9 +61,9 @@ export const roadmap = [
     id: "02",
     points: [
       "	Partnership Campaign",
-      "	Partnership Campaign     ",
+      "	Ambassador Campaign",
       "	Viral Time Campaign",
-      "	Viral Time Campaign",
+      "	Audit CertiK",
       "		CEX Listing ",
     ],
     imgUrl: "/images/nft/4.png",
@@ -86,7 +86,7 @@ export const FAQ = [
   {
     q: "1.	What are the $SCOOBY token details?",
     ans: [
-      "$SCOOBY is an ERC-20 token on the Ethereum blockchain with a maximum supply of 1,000,000,000 (1 billion). The token contract address is 0xE7589ADdd235aFFEACa91Bf2b7903EbCc2F6eE4d Please do not send any funds to this token contract address, as they cannot be recovered. $SCOOBY can currently only be purchased through the official presale.     ",
+      "$SCOOBY is an ERC-20 token on the Ethereum blockchain with a maximum supply of 1,000,000,000 (1 billion). The token contract address is 0xE7589ADdd235aFFEACa91Bf2b7903EbCc2F6eE4d Please do not send any funds to this token contract address, as they cannot be recovered. $SCOOBY can currently only be purchased through the official presale.",
     ],
   },
 
@@ -104,9 +104,7 @@ export const FAQ = [
   },
   {
     q: "4.	When is the claim and launch of $SCOOBY?",
-    ans: [
-      "You can instantly claim the moment you buy $SCOOBY presale.",
-    ],
+    ans: ["You can instantly claim the moment you buy $SCOOBY presale."],
   },
   {
     q: "5.	How do I claim my $SCOOBY tokens?",
@@ -114,5 +112,4 @@ export const FAQ = [
       "Claiming is live on the Scooby Doo website using the same wallet you used to contribute. $SCOOBY is an ERC-20 token on the Ethereum network.",
     ],
   },
- 
 ];
