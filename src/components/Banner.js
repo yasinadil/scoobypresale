@@ -139,7 +139,8 @@ const Banner = () => {
 
   const handleUSDTBuySuccess = () => {
     setApproved(false);
-    setUsdtInput("");
+    setUsdtInput("0");
+    setTokenAmount("0");
     toast.success("Transaction Successful!", {
       position: "top-right",
       autoClose: 5000,
